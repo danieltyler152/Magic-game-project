@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Portal1controller: MonoBehaviour
+public class Portal1controller : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,6 +13,8 @@ public class Portal1controller: MonoBehaviour
     // Update is called once per frame
 
     public GameObject Portal1;
+    public float raycastDistance;
+    public LayerMask layers;
 
     void Update()
     {
