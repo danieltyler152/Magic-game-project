@@ -117,7 +117,7 @@ namespace EasyPeasyFirstPersonController
         
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("Player pressed E");
                 Raycast();
