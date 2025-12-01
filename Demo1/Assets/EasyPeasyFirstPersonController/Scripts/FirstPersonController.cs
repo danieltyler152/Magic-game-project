@@ -94,13 +94,10 @@ namespace EasyPeasyFirstPersonController
             rotY = playerCamera.localRotation.eulerAngles.x;
             xVelocity = rotX;
             yVelocity = rotY;
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Player pressed E");
-            }
+
         }
 
-        public float raycastDistance;
+        public float raycastDistance = 50f;
         public LayerMask layers;
 
         public void Raycast()
@@ -112,17 +109,19 @@ namespace EasyPeasyFirstPersonController
                 print(hit.collider.gameObject.name);
                 if(hit.collider.gameObject.name == "Poplar_Tree")
                 {
-                    if (Input.GetMouseButtonDown(1))
-                    {
-                        hit.collider.gameObject.transform.Rotate(1, 0, 0);
-                    }
-
+                    hit.collider.gameObject.transform.Rotate(1, 0, 0);
+                    Destroy(hit.collider.gameObject, 5f);
                 }
             }
         }
         
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Player pressed E");
+                Raycast();
+            }
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask, groundCheckQueryTriggerInteraction);
             if (isGrounded && moveDirection.y < 0)
             {
