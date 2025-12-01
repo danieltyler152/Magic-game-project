@@ -2,6 +2,7 @@ namespace EasyPeasyFirstPersonController
 {
     using System;
     using System.Collections;
+    using Unity.VisualScripting.Antlr3.Runtime.Tree;
     using UnityEngine;
 
     public partial class FirstPersonController : MonoBehaviour
@@ -70,6 +71,7 @@ namespace EasyPeasyFirstPersonController
         private float tiltVelocity;
         public AudioSource walkstep;
         public float CurrentCameraHeight => isCrouching || isSliding ? crouchCameraHeight : originalCameraParentHeight;
+        public ParticleSystem explosion;
 
         private void Awake()
         {
@@ -99,6 +101,7 @@ namespace EasyPeasyFirstPersonController
 
         public float raycastDistance = 50f;
         public LayerMask layers;
+       
 
         public void Raycast()
         {
@@ -110,11 +113,20 @@ namespace EasyPeasyFirstPersonController
                 if(hit.collider.gameObject.name == "Poplar_Tree")
                 {
                     hit.collider.gameObject.transform.Rotate(1, 0, 0);
+                    StartCoroutine(explosionDelay());
                     Destroy(hit.collider.gameObject, 5f);
+                    explosion.transform.position = hit.collider.gameObject.transform.position;
+                    
                 }
             }
         }
-        
+        public IEnumerator explosionDelay()
+        {
+
+            yield return new WaitForSeconds(5f);
+            explosion.Play();
+
+        }
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
