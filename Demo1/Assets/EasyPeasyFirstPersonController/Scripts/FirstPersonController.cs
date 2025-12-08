@@ -131,7 +131,7 @@ namespace EasyPeasyFirstPersonController
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Player pressed E");
+                Debug.Log("Player fired the tree spell!");
                 Raycast();
             }
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask, groundCheckQueryTriggerInteraction);
