@@ -4,6 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
@@ -15,14 +21,16 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Demo1");
     }
-    public void settingsButton()
-    {
-
-    }
     public void creditsButton()
     {
         SceneManager.LoadScene("CreditScene");
     }
+
+    public void controlsButton()
+    {
+        SceneManager.LoadScene("ControlsScene");
+    }
+
     public void quitButton()
     {
         Application.Quit();

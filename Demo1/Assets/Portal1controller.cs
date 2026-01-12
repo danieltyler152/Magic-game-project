@@ -18,11 +18,6 @@ public class Portal1controller : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("You pressed T");
-
-        }
         if (Input.GetKey(KeyCode.Y))
         {
             Portal1.transform.Translate(0, (float)0.01, 0);
