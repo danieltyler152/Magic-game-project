@@ -4,17 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    public void Start()
-    {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
             SceneManager.LoadScene("UIscene");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
     public void PlayButton()
